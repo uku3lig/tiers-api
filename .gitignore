@@ -1,0 +1,9 @@
+# idea
+.idea
+**.iml
+**.iws
+
+# python
+venv
+build
+__pycache__
