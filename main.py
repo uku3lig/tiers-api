@@ -36,7 +36,8 @@ def get_tiers(mode: str):
     for index, col in enumerate("B D F H J".split()):
         metadata = sheet.fetch_sheet_metadata({"includeGridData": True, "ranges": f"{mode}!{col}2:{col}"})
         cells = metadata["sheets"][0]["data"][0]["rowData"]
-        for cell in cells:
+        filled_cells = [c for c in cells if "values" in c]  # remove all empty cells
+        for cell in filled_cells:
             values = cell["values"][0]
             if "effectiveValue" in values:
                 name = values["effectiveValue"]
